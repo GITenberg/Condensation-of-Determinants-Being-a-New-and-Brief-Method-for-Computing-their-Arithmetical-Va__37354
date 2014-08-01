@@ -1,0 +1,1746 @@
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
+%                                                                         %
+% The Project Gutenberg EBook of Condensation of Determinants, Being a New%
+% and Brief Method for Computing their Arithmetical Values, by Lewis Carroll (AKA Charles Lutwidge Dodgson)
+%                                                                         %
+% This eBook is for the use of anyone anywhere at no cost and with        %
+% almost no restrictions whatsoever.  You may copy it, give it away or    %
+% re-use it under the terms of the Project Gutenberg License included     %
+% with this eBook or online at www.gutenberg.org                          %
+%                                                                         %
+%                                                                         %
+% Title: Condensation of Determinants, Being a New and Brief Method for Computing their Arithmetical Values
+%                                                                         %
+% Author: Lewis Carroll (AKA Charles Lutwidge Dodgson)                    %
+%                                                                         %
+% Release Date: September 8, 2011 [EBook #37354]                          %
+%                                                                         %
+% Language: English                                                       %
+%                                                                         %
+% Character set encoding: ISO-8859-1                                      %
+%                                                                         %
+% *** START OF THIS PROJECT GUTENBERG EBOOK CONDENSATION OF DETERMINANTS ***
+%                                                                         %
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
+
+\def\ebook{37354}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                  %%
+%% Packages and substitutions:                                      %%
+%%                                                                  %%
+%% book:     Required.                                              %%
+%% inputenc: Standard DP encoding. Required.                        %%
+%%                                                                  %%
+%% amsmath:  AMS mathematics enhancements. Required.                %%
+%% amssymb:  Additional mathematical symbols. Required.             %%
+%%                                                                  %%
+%% alltt:    Fixed-width font environment. Required.                %%
+%% array:    Enhanced tabular features. Required.                   %%
+%%                                                                  %%
+%% geometry: Enhanced page layout package. Required.                %%
+%% fancyhdr: Enhanced page headers. Required.                       %%
+%% hyperref: Hypertext embellishments for pdf output. Required.     %%
+%% ifthen:   Logical conditionals. Required.                        %%
+%%                                                                  %%
+%%                                                                  %%
+%% Producer's Comments:                                             %%
+%%                                                                  %%
+%%   Changes are noted in this file with \DPtypo{}{}, showing       %%
+%%      original and replacement text side-by-side.                 %%
+%%                                                                  %%
+%% PDF pages: 20                                                    %%
+%% PDF page size: 5.25 x 8" (non-standard)                          %%
+%% PDF document info: filled in                                     %%
+%%                                                                  %%
+%%                                                                  %%
+%% Command block:                                                   %%
+%%                                                                  %%
+%%     pdflatex x2                                                  %%
+%%                                                                  %%
+%%                                                                  %%
+%%                                                                  %%
+%% September 2011: pglatex.                                         %%
+%%   Compile this project with:                                     %%
+%%   pdflatex 37354-t.tex ..... TWO times                           %%
+%%                                                                  %%
+%%   pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian)       %%
+%%                                                                  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\listfiles
+
+\documentclass[12pt]{book}[2007/10/19]
+\usepackage[latin1]{inputenc}[2008/03/30]
+
+\usepackage{amsmath}[2000/07/18] %% Displayed equations
+\usepackage{amssymb}[2009/06/22] %% and additional symbols
+
+\usepackage{alltt}[1997/06/16]   %% boilerplate, credits, license
+
+\usepackage{array}[2008/09/09]   %% extended array/tabular features
+
+\usepackage{ifthen}[2001/05/26]
+
+% for running heads
+\usepackage{fancyhdr}
+
+\newcommand{\Margins}{hmarginratio=1:1}     % Symmetric margins
+\newcommand{\HLinkColor}{blue}              % Hyperlink color
+\newcommand{\PDFPageLayout}{SinglePage}
+\newcommand{\TransNote}{Transcriber's Note}
+\newcommand{\TransNoteText}{%
+  Minor typographical corrections and presentational changes have
+  been made without comment.
+  \bigskip
+}
+
+\renewcommand{\cleardoublepage}{\clearpage}
+
+ \raggedbottom
+ \usepackage[body={5in,6.66in}, paperwidth=5.25in, paperheight=8in, \Margins,includeheadfoot]{geometry}[2010/09/12]
+
+\providecommand{\ebook}{00000}    % Overridden during white-washing
+\usepackage[pdftex,
+  hyperfootnotes=false,
+  pdftitle={The Project Gutenberg eBook \#\ebook: Condensation of Determinants, being a new and brief Method for computing their arithmetical values},
+  pdfauthor={Charles L. Dodgson (Lewis Carrol)},
+  pdfkeywords={Carlo Traverso, Anna Hall,
+               Project Gutenberg Online Distributed Proofreading Team},
+  pdfstartview=Fit,    % default value
+  pdfstartpage=1,      % default value
+  pdfpagemode=UseNone, % default value
+  bookmarks=true,      % default value
+  linktocpage=false,   % default value
+  pdfpagelayout=\PDFPageLayout,
+  pdfdisplaydoctitle,
+  pdfpagelabels=true,
+  bookmarksopen=true,
+  bookmarksopenlevel=1,
+  colorlinks=true,
+  linkcolor=\HLinkColor]{hyperref}[2011/04/17]
+
+%%%% Fixed-width environment to format PG boilerplate %%%%
+\newenvironment{PGtext}{%
+\begin{alltt}
+\fontsize{8.1}{9}\ttfamily\selectfont}%
+{\end{alltt}}
+
+% Running heads
+\newcommand{\FlushRunningHeads}{\clearpage\fancyhf{}\cleardoublepage}
+
+\newcommand{\BookMark}[2]{\phantomsection\pdfbookmark[#1]{#2}{#2}}
+
+%% Major document divisions %%
+\newcommand{\PGBoilerPlate}{%
+  \pagenumbering{Alph}
+  \pagestyle{empty}
+  \BookMark{0}{PG Boilerplate.}
+}
+\newcommand{\FrontMatter}{%
+  \cleardoublepage
+  \frontmatter
+  \pagestyle{empty}
+}
+
+\newcommand{\MainMatter}{%
+  \FlushRunningHeads
+  \mainmatter
+  \pagestyle{fancy}
+  \fancyhf{}
+  \setlength{\headheight}{15pt}
+  \thispagestyle{plain}
+  \fancyhead[C]{Rev.\ C. L. Dodgson \textit{on Condensation of Determinants}.}
+  \renewcommand{\headrulewidth}{0pt}
+  \fancyhead[R]{\thepage}
+}
+
+\newcommand{\BackMatter}{%
+  \FlushRunningHeads
+  \backmatter
+  \BookMark{-1}{Back Matter.}
+}
+
+\newcommand{\DPtypo}[2]{#2}
+
+\newcommand{\SquashArrays}{\setlength{\arraycolsep}{2pt}}
+
+\newcommand{\tb}{\begin{center}\rule{1in}{0.5pt}\end{center}}
+
+\DeclareInputText{183}{\ifmmode\cdot\else\textperiodcentered\fi}
+
+\newcounter{RowCount}
+% \Tall{3}: Create vertical space as tall as an array with 3 rows
+\newcommand{\Tall}[1]{\setcounter{RowCount}{1}%
+ \vphantom{\left|\begin{array}{r}
+       \whiledo{\value{RowCount} < #1}
+       {\stepcounter{RowCount}0\\}
+     0
+     \end{array}\right|}}
+
+\hfuzz=0.5pt
+%%%%%%%%%%%%%%%%%%%%%%%% START OF DOCUMENT %%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\PGBoilerPlate
+{\small
+\begin{PGtext}
+The Project Gutenberg EBook of Condensation of Determinants, Being a New
+and Brief Method for Computing their Arithmetical Values, by Lewis Carroll (AKA Charles Lutwidge Dodgson)
+
+This eBook is for the use of anyone anywhere at no cost and with
+almost no restrictions whatsoever.  You may copy it, give it away or
+re-use it under the terms of the Project Gutenberg License included
+with this eBook or online at www.gutenberg.org
+
+
+Title: Condensation of Determinants, Being a New and Brief Method for Computing their Arithmetical Values
+
+Author: Lewis Carroll (AKA Charles Lutwidge Dodgson)
+
+Release Date: September 8, 2011 [EBook #37354]
+
+Language: English
+
+Character set encoding: ISO-8859-1
+
+*** START OF THIS PROJECT GUTENBERG EBOOK CONDENSATION OF DETERMINANTS ***
+\end{PGtext}
+\clearpage
+\begin{PGtext}
+Produced by Carlo Traverso, Anna Hall and the Online
+Distributed Proofreading Team at http://www.pgdp.net (This
+book was produced from scanned images of public domain
+material from the Google Print project.)
+\end{PGtext}}
+\vfill
+
+\BookMark{0}{Transcriber's Note}
+\subsection*{\centering\normalfont\scshape
+\normalsize\MakeLowercase{\TransNote}}
+
+\TransNoteText
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% FRONT MATTER %%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\FrontMatter
+
+%% -----File: 000.png---
+\begin{center}
+{\LARGE PROCEEDINGS} \\
+\vfill
+{\scriptsize OF THE }\\
+\vfill
+{\LARGE ROYAL SOCIETY OF LONDON.}
+\vfill
+\textit{From January~11, 1866, to May~23, 1867, inclusive.}
+\vfill
+VOL.~XV.
+\vfill
+LONDON: \\
+PRINTED BY TAYLOR AND FRANCIS, \\
+{\scriptsize RED LION COURT, FLEET STREET.} \\
+{\footnotesize MDCCCLXVII.}
+\end{center}
+%% -----File: 001.png---
+\MainMatter
+\begin{quote}
+IV. ``Condensation of Determinants, being a new and brief Method
+for computing their arithmetical values.'' By the Rev.\ C.~L.
+\textsc{Dodgson},~M.A., Student of Christ Church, Oxford. Communicated
+by the Rev.\ \textsc{Bartholomew Price}, M.A., F.R.S\@.
+Received May~15,~1866.
+\end{quote}
+
+If it be proposed to solve a set of $n$~simultaneous linear equations, not
+being all homogeneous, involving $n$~unknowns, or to test their compatibility
+when all are homogeneous, by the method of determinants, in these, as
+well as in other cases of common occurrence, it is necessary to compute
+the arithmetical values of one or more determinants---such, for example, as
+\[
+\left|\begin{array}{rrr}
+1, &3, &-2\\
+2, &1, & 4\\
+3, &5, &-1
+\end{array}\right|.
+\]
+
+Now the only method, so far as I am aware, that has been hitherto
+employed for such a purpose, is that of multiplying each term of the first
+row or column by the determinant of its complemental minor, and affecting
+the products with the signs $+$~and~$-$ alternately, the determinants required
+in the process being, in their turn, broken up in the same manner
+until determinants are finally arrived at sufficiently small for mental computation.
+
+This process, in the above instance, would run thus:---
+\[
+\begin{split}
+\left|\begin{array}{rrr}
+1, &3, &-2\\
+2, &1, & 4\\
+3, &5, &-1
+\end{array}\right|
+= 1 × \left|\begin{array}{rr}
+1, & 4\\
+5, &-1
+\end{array}\right|
+-2 × \left|\begin{array}{rr}
+3, &-2\\
+5, &-1
+\end{array}\right|
++ 3 × \left|\begin{array}{rr}
+3, &-2\\
+1, & 4
+\end{array}\right|\\
+= -21 - 14 + 42 = 7.
+\end{split}
+\]
+
+But such a process, when the block consists of $16$, $25$,~or more terms, is
+so tedious that the old method of elimination is much to be preferred for
+solving simultaneous equations; so that the new method, excepting for
+equations containing $2$~or $3$~unknowns, is practically useless.
+
+The new method of computation, which I now proceed to explain, and
+for which ``Condensation'' appears to be an appropriate name, will be
+found, I believe, to be far shorter and simpler than any hitherto employed.
+
+In the following remarks I shall use the word ``Block'' to denote any
+number of terms arranged in rows and columns, and ``interior of a block''
+to denote the block which remains when the first and last rows and columns
+are erased.
+
+The process of ``Condensation'' is exhibited in the following rules, in
+which the given block is supposed to consist of $n$~rows and $n$~columns:---
+
+(1) Arrange the given block, if necessary, so that no ciphers occur in its
+interior. This may be done either by transposing rows or columns, or by
+adding to certain rows the several terms of other rows multiplied by
+certain multipliers.
+
+(2) Compute the determinant of every minor consisting of four adjacent
+%% -----File: 002.png---
+terms. These values will constitute a second block, consisting of $(n - 1)$
+rows and $(n - 1)$~columns.
+
+(3) Condense this second block in the same manner, dividing each term,
+when found, by the corresponding term in the interior of the first block.
+
+(4) Repeat this process as often as may be necessary (observing that in
+condensing any block of the series, the $r$th for example, the terms so found
+must be divided by the corresponding terms in the interior of the $(r - 1)$th
+block), until the block is condensed to a single term, which will be the
+required value.
+
+As an instance of the foregoing rules, let us take the block
+\[
+\left|\begin{array}{rrrr}
+-2 &-1 &-1 &-4\\
+-1 &-2 &-1 &-6\\
+-1 &-1 & 2 & 4\\
+ 2 & 1 &-3 &-8
+\end{array}\right|.
+\]
+
+By rule~(2) this is condensed into
+$\left|\begin{array}{rrr}
+ 3 &-1 & 2\\
+-1 &-5 & 8\\
+ 1 & 1 &-4
+\end{array}\right|
+$;
+this, again, by
+rule~(3), is condensed into
+$\left|\begin{array}{rr}
+ 8 &-2\\
+-4 & 6
+\end{array}\right|$; and this, by rule~(4), into~$-8$,
+which is the required value.
+
+The simplest method of working this rule appears to be to arrange the
+series of blocks one under another, as here exhibited; it will then be found
+very easy to pick out the divisors required in rules (3)~and~(4).
+\[
+\left|\begin{array}{rrrr}
+-2 &-1 &-1 &-4\\
+-1 &-2 &-1 &-6\\
+-1 &-1 & 2 & 4\\
+ 2 & 1 &-3 &-8
+\end{array}\right|
+\]
+\[
+\left|\begin{array}{rrr}
+ 3 &-1 &2\\
+-1 &-5 &8\\
+ 1 & 1 &-4
+\end{array}\right|
+\]
+\[
+\left|\begin{array}{rr}
+ 8 &-2\\
+-4 & 6
+\end{array}\right|
+\]
+\[
+-8.
+\]
+
+This process cannot be continued when ciphers occur in the interior of
+any one of the blocks, since infinite values would be introduced by employing
+them as divisors. When they occur in the given block itself, it
+may be rearranged as has been already mentioned; but this cannot be done
+when they occur in any one of the derived blocks; in such a case the
+given block must be rearranged as circumstances require, and the operation
+commenced anew.
+
+The best way of doing this is as follows:---
+
+Suppose a cipher to occur in the $h$th~row and $k$th~column of one of the
+derived blocks (reckoning both row and column from the \emph{nearest} corner
+of the block); find the term in the $h$th~row and $k$th~column of the given
+%% -----File: 003.png---
+block (reckoning from the corresponding corner), and transpose rows or
+columns cyclically until it is left in an outside row or column. When the
+necessary alterations have been made in the derived blocks, it will be found
+that the cipher now occurs in an outside row or column, and therefore
+need no longer be used as a divisor.
+
+The advantage of \emph{cyclical} transposition is, that most of the terms in the
+new blocks will have been computed already, and need only be copied; in
+no case will it be necessary to compute more than \emph{one} new row or column
+for each block of the series.
+
+In the following instance it will be seen that in the first series of blocks
+a cipher occurs in the interior of the third. We therefore abandon the
+process at that point and begin again, rearranging the given block by
+transferring the top row to the bottom; and the cipher, when it occurs, is
+now found in an exterior row. It will be observed that in each block of
+the new series, there is only \emph{one} new row to be computed; the other rows
+are simply copied from the work already done.
+\[
+\begin{gathered}[t]
+\left|\begin{array}{rrrrr}
+2 &-1 & 2 & 1 &-3\\
+1 & 2 & 1 &-1 & 2\\
+1 &-1 &-2 &-1 &-1\\
+2 & 1 &-1 &-2 &-1\\
+1 &-2 &-1 &-1 & 2\\
+\end{array}\right|
+\\
+\left|\begin{array}{rrrr}
+ 5 &-5 &-3 &-1\\
+-3 &-3 &-3 & 3\\
+ 3 & 3 & 3 &-1\\
+-5 &-3 &-1 &-5\\
+\end{array}\right|
+\\
+\left|\begin{array}{rrr}
+\DPtypo{-30}{-15} & 6 &\DPtypo{-12}{12}\\
+  0 & 0 &  6\\
+  6 &-6 &  8\\
+\end{array}\right|
+\end{gathered}
+\qquad
+\begin{gathered}[t]
+\left|\begin{array}{rrrrr}
+1 & 2 & 1 &-1 & 2\\
+1 &-1 &-2 &-1 &-1\\
+2 & 1 &-1 &-2 &-1\\
+1 &-2 &-1 &-1 & 2\\
+2 &-1 & 2 & 1 &-3\\
+\end{array}\right|
+\\
+\left|\begin{array}{rrrr}
+-3 &-3 &-3 & 3\\
+ 3 & 3 & 3 &-1\\
+-5 &-3 &-1 &-5\\
+ 3 &-5 & 1 & 1\\
+\end{array}\right|
+\\
+\left|\begin{array}{rrr}
+  0 & 0 & 6\\
+  6 &-6 & 8\\
+-17 & 8 &-4\\
+\end{array}\right|
+\\
+\left|\begin{array}{rr}
+ 0 &12\\
+18 &40\\
+\end{array}\right|
+\\
+36.
+\end{gathered}
+\]
+
+The fact that, whenever ciphers occur in the interior of a derived block,
+it is necessary to recommence the operation, may be thought a great
+obstacle to the use of this method; but I believe it will be found in practice
+that, even though this should occur several times in the course of one
+operation, the whole amount of labour will still be much less than that involved
+in the old process of computation.
+\tb
+
+I now proceed to give a proof of the validity of this process, deduced
+from a well-known theorem in determinants; and in doing so, I shall use
+the word ``adjugate'' in the following sense:---if there be a square block,
+and if a new block be formed, such that each of its terms is the determinant
+of the complemental minor of the corresponding term of the first
+block, the second block is said to be \emph{adjugate} to the first.
+%% -----File: 004.png---
+
+The theorem referred to is the following:---
+
+``If the determinant of a block $= R$, the determinant of any minor of
+the $m$th~degree of the adjugate block is the product of~$R^{m - 1}$ and the
+coefficient which, in~$R$, multiplies the determinant of the corresponding
+minor.''
+
+Let us first take a block of $9$~terms,
+\[
+\left|\begin{array}{ccc}
+a_{1,1} &a_{1,2} &a_{1,3}\\
+a_{2,1} &a_{2,2} &a_{2,3}\\
+a_{3,1} &a_{3,2} &a_{3,3}
+\end{array}\right|
+= R;
+\]
+and let $\alpha_{1,1}$~represent the determinant of the complemental minor of~$a_{1,1}$,
+and so on.
+
+If we ``condense'' this, by the method already given, we get the block
+$\left\{\begin{array}{cc}
+\alpha_{3,3} &\alpha_{3,1}\\
+\alpha_{1,3} &\alpha_{1,1}
+\end{array}\right\},$ and, by the theorem above cited, the determinant of this,
+viz.\
+\[
+\left|\begin{array}{cc}
+\alpha_{3,3} &\alpha_{3,1}\\
+\alpha_{1,3} &\alpha_{1,1}
+\end{array}\right|
+= R × a_{2,2}.
+\]
+
+Hence
+\[
+R = \frac{\left|\begin{array}{cc}
+\alpha_{3,3} &\alpha_{3,1}\\
+\alpha_{1,3} &\alpha_{1,1}
+\end{array}\right|}{a_{2,2}},
+\]
+which proves the rule.
+
+Secondly, let us take a block of $16$~terms:
+\[
+\left|\begin{array}{ccc}
+a_{1,1}&\dots &a_{1,4}\\
+\vdots &      &\vdots \\
+a_{4,1}&\dots &a_{4,4}
+\end{array}\right|
+= R.
+\]
+If we ``condense'' this, we get a block of $9$~terms; let us denote it by
+\[
+\left\{\begin{array}{ccc}
+b_{1,1} &\dots &b_{1,3}\\
+\vdots  &      &\vdots \\
+b_{3,1} &\dots &b_{3,3}
+\end{array}\right\},
+\text{ in which }
+b_{1,1} =
+\left|\begin{array}{cc}
+a_{1,1} &a_{1,2}\\
+a_{2,1} &a_{2,2}
+\end{array}\right|, \text{ \&c.}
+\]
+
+If we ``condense'' this block again, we get a block of $4$~terms, each
+of which, by the preceding paragraph, is the determinant of $9$~terms
+of the original block; that is to say, we get the block
+$\left\{\begin{array}{cc}
+\alpha_{4,4} &\alpha_{4,1}\\
+\alpha_{1,4} &\alpha_{1,1}
+\end{array}\right\}$;
+but, by the theorem already quoted,
+$\left|\begin{array}{cc}
+\alpha_{4,4} &\alpha_{4,1}\\
+\alpha_{1,4} &\alpha_{1,1}
+\end{array}\right| = R × b_{2,2}$; therefore
+$R = \dfrac{\left|\begin{array}{cc}
+\alpha_{4,4} &\alpha_{4,1}\\
+\alpha_{1,4} &\alpha_{1,1}
+\end{array}\right|}{b_{2,2}}$; that is, $R$~may be obtained by ``condensing'' the block
+$\left\{\begin{array}{cc}
+\alpha_{4,4} &\alpha_{4,1}\\
+\alpha_{1,4} &\alpha_{1,1}
+\end{array}\right\}$.
+
+This proves the rule for a block of $16$~terms; and similar proofs might
+be given for larger blocks.
+\tb
+
+I shall conclude by showing how this process may be applied to the
+solution of simultaneous linear equations.
+%% -----File: 005.png---
+
+If we take a block consisting of $n$~rows and $(n + 1)$~columns, and ``condense''
+it, we reduce it at last to $2$~terms, the first of which is the determinant
+of the first $n$~columns, the other of the last $n$~columns.
+
+Hence, if we take the $n$~simultaneous equations,
+\begin{alignat*}{3}
+a_{1,1}x_{1} +{}& a_{1,2}x_{2} + \cdots\,&\cdots + a_{1,n}x_{n} &+ a_{1,n + 1} = 0,\\
+\multispan{4}{\dotfill} \\
+a_{n,1}x_{1} +{}&\multispan{2}{\dotfill}&+ a_{n,n + 1} = 0;
+\end{alignat*}
+and if we condense the whole block of coefficients and constants, viz.\
+\[
+\left\{\begin{array}{ccc}
+a_{1,1} &\dots &a_{1,n + 1}\\
+\vdots  &      &\vdots \\
+a_{n,1} &\dots &a_{n,n + 1}
+\end{array}\right\},
+\]
+we reduce it at last to $2$~terms: let us denote them by $S$,~$T$, so that
+\[
+S = \left|\begin{array}{ccc}
+a_{1,1} &\dots &a_{1,n}\\
+\vdots  &      &\vdots \\
+a_{n,1} &\dots &a_{n,n}
+\end{array}\right|,
+\text{ and }
+T = \left|\begin{array}{ccc}
+a_{\DPtypo{1,1}{1,2}} &\dots &a_{1,n+1}\\
+\vdots  &      &\vdots \\
+a_{n,2} &\dots &a_{n,n+1}
+\end{array}\right|.
+\]
+
+Now we know that $x_{1} = (-)^{n} \dfrac{T}{S}$, which may be written in the form
+$(-)^{n}S · x_{1} = T$.
+
+Hence the $2$~terms obtained by the process of condensation may be
+converted into an equation for~$x_{1}$, by multiplying the first of them by~$x_{1}$,
+affected with $+$~or~$-$, according as $n$~is even or odd. The latter part of
+the rule may be simply expressed thus:---``place the signs $+$~and~$-$
+alternately over the several columns, beginning with the last, and the sign
+which occurs over the column containing~$x_{1}$ is the sign with which $x_{1}$ is to
+be affected.''
+
+When the value of~$x_{1}$ has been thus found, it may be substituted in the
+first $(n - 1)$~equations, and the same operation repeated on the new block,
+which will now consist of $(n - 1)$~rows and $n$~columns. But in calculating
+the second series of blocks, it will be found that most of the work has been
+already done; in fact, of the $2$~determinants required in the new block, one
+has been already computed correctly, and the other so nearly so that it
+only requires the \emph{last} column in each of the derived blocks to be corrected.
+
+In the \hyperlink{example}{example} given opposite, after writing $+$~and~$-$ alternately over
+the columns, beginning with the last, we first condense the whole block, and
+thus obtain the $2$~terms $36$~and~$-72$. Observing that the $x$-column has
+the sign~$-$ placed over it, we multiply the~$36$ by~$-x$, and so form the
+equation $-36x = -72$, which gives~$x = 2$.
+
+Hence the $x$-terms in the first four equations become respectively
+$2$,~$2$,~$4$, and~$2$; adding these values to the constant terms in the same equations,
+we obtain a block of which we need only write down the last two
+columns, viz.\
+\[
+\left|\begin{array}{rr}
+ 2 & 4\\
+-1 &-2\\
+-1 &-2\\
+ 2 & 6
+\end{array}\right|.
+\]
+%% -----File: 006.png---
+
+We then condense these into the column~$\left|\begin{array}{r}
+0\\
+0\\
+\DPtypo{2}{-2}
+\end{array}\right|$,
+and, supplying from
+the second block of the first series the column~$\left|\begin{array}{r}
+ 3\\
+-1\\
+-5
+\end{array}\right|$, we obtain
+$\left|\begin{array}{rr}
+ 3 &0\\
+-1 &0\\
+-5 &\DPtypo{2}{-2}
+\end{array}\right|$ as the last two columns of the \emph{second} block of the new series;
+and proceeding thus we ultimately obtain the two terms $12$,~$12$. Observing
+that the $y$-column has the sign~$+$ placed over it, we multiply the first~$12$
+by~$+y$, and so form the equation $12y = 12$, which gives $y = 1$. The
+values of $z$,~$u$, and~$v$ are similarly found.
+
+% In Dodgson's two examples, the coefficient matrix of the original
+% system is at upper left. Each column of the calculation, which Dodgson
+% calls a "series", solves the system for one variable. Successive matrices
+% in a column are obtained by condensations, reducing the size of the matrix
+% until the value of one variable can be read off, with the sign adjusted
+% according to the +/- over the corresponding column in the original system.
+%
+% Next, the solved value of the variable is substituted into the system, the
+% last equation/coefficient row is dropped, the constants are "updated", and
+% the process begins anew. Only condensations involving the last column need
+% to be recomputed, so the second and subsequent series involve only 2 x n
+% matrices. In the matrix at the top of each series, the two columns are
+% (i) the penultimate column of the preceding series and (ii) the updated
+% values of the constants.
+It will be seen that when once the given block has been successfully
+condensed, and the value of the first unknown obtained, there is no further
+danger of the operation being interrupted by the occurrence of ciphers.
+\hypertarget{example}
+\[
+\begin{array}{ccccccc}
+ - &+   &-   &+   &-   &+  &   \\
+ x &+2y &+ z &- u &+2v &+2 &= 0\\
+ x &- y &-2z &- u &- v &-4 &= 0\\
+2x &+ y &- z &-2u &- v &-6 &= 0\\
+ x &-2y &- z &- u &+2v &+4 &= 0\\
+2x &- y &+2z &+ u &-3v &-8 &= 0
+\end{array}
+\]
+\[
+\SquashArrays
+% First series of blocks
+\begin{gathered}
+\left|\begin{array}{rrrrrr}
+1 & 2 & 1 &-1 & 2 & 2\\
+1 &-1 &-2 &-1 &-1 &-4\\
+2 & 1 &-1 &-2 &-1 &-6\\
+1 &-2 &-1 &-1 & 2 & 4\\
+2 &-1 & 2 & 1 &-3 &-8
+\end{array}\right|
+\\
+\left|\begin{array}{rrrrr}
+-3 &-3 &-3 & 3 &-6\\
+ 3 & 3 & 3 &-1 & 2\\
+-5 &-3 &-1 &-5 & 8\\
+ 3 &-5 & 1 & 1 &-4
+\end{array}\right|
+\\
+\left|\begin{array}{rrrr}
+  0 & 0 & 6 & 0\\
+  6 &-6 & 8 &-2\\
+-17 & 8 &-4 & 6
+\end{array}\right|
+\\
+\left|\begin{array}{rrr}
+ 0 &12 &12\\
+18 &40 &-8
+\end{array}\right|
+\\
+\left|\begin{array}{rr} 36 & -72 \end{array}\right| \\
+\DPtypo{\because}{\therefore} -36x = -72 \\
+x = 2
+\end{gathered}
+\;
+% Second series
+\begin{gathered}
+\left|\begin{array}{rr}
+ 2 & 4\\
+-1 &-2\\
+-1 &-2\\
+ 2 & 6
+\end{array}\right|
+\\
+\left|\begin{array}{rr}
+ 3 & 0\\
+-1 & 0\\
+-5 &-2
+\end{array}\right|
+\\
+\left|\begin{array}{rr}
+6 & 0\\
+8 &-2
+\end{array}\right|
+\\
+\left|\begin{array}{rr} 12 & 12 \end{array}\right| \\
+\therefore 12y = 12 \\
+y = 1
+\\
+\Tall{5}
+\end{gathered}
+\;
+% Third series
+\begin{gathered}
+\left|\begin{array}{rr}
+ 2 & 6\\
+-1 &-3\\
+-1 &-1
+\end{array}\right|
+\\
+\left|\begin{array}{rr}
+ 3 & 0\\
+-1 &-2
+\end{array}\right|
+\\
+\left|\begin{array}{rr} 6 & 6\end{array}\right| \\
+\therefore -6z = 6 \\
+z = -1
+\\
+\Tall{5}
+\\
+\Tall{4}
+\end{gathered}
+\;
+% Fourth series
+\begin{gathered}
+\left|\begin{array}{rr}
+ 2 & 5\\
+-1 &-1
+\end{array}\right|
+\\
+\left|\begin{array}{rr} 3 & 3 \end{array}\right| \\
+\therefore 3u = 3 \\
+u = 1
+\\
+\Tall{5}
+\\
+\Tall{4}
+\\
+\Tall{3}
+\end{gathered}
+\;
+% Fifth series
+\begin{gathered}
+\left|\begin{array}{rr} 2 & 4 \end{array}\right| \\
+\therefore -2v = 4 \\
+v = -2
+\\
+\Tall{5}
+\\
+\Tall{4}
+\\
+\Tall{3}
+\\
+\Tall{2}
+\end{gathered}
+\]
+
+\tb
+%
+\[
+\begin{array}{ccccc}
+-  &+   &-   &+   &   \\
+5x &+2y &-3z &+ 3 &= 0\\
+3x &- y &-2z &+ 7 &= 0\\
+2x &+3y &+ z &-12 &= 0
+\end{array}
+\]
+\[
+% First series
+\begin{gathered}
+\left|\begin{array}{rrrr}
+5 & 2 &-3 &  3\\
+3 &-1 &-2 &  7\\
+2 & 3 & 1 &-12
+\end{array}\right|
+\\
+\left|\begin{array}{rrr}
+-11 &-7 &-15\\
+ 11 & 5 & 17
+\end{array}\right|
+\\
+\left|\begin{array}{cc} -22 & 22 \end{array}\right| \\
+\therefore 22x =22 \\
+x = 1
+\end{gathered}
+\quad
+\begin{gathered}
+\left|\begin{array}{rr}
+-3 & 8\\
+-2 &10
+\end{array}\right|
+\\
+\left|\begin{array}{cc} -7 & -14 \end{array}\right| \\
+\therefore -7y = -14 \\
+y = 2
+\\
+\Tall{3}
+\end{gathered}
+\quad
+\begin{gathered}
+\left|\begin{array}{rr} -3 & 12 \end{array}\right| \\
+\therefore 3z = 12 \\
+z = 4
+\\
+\Tall{3}
+\\
+\Tall{2}
+\end{gathered}
+\]
+
+The Society then adjourned over the Whitsuntide Recess to Thursday,
+May~31.
+
+\BackMatter
+%%%%%%%%%%%%%%%%%%%%%%%%% GUTENBERG LICENSE %%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\BookMark{0}{PG License.}
+\begin{PGtext}
+End of the Project Gutenberg EBook of Condensation of Determinants, Being a
+New and Brief Method for Computing their Arithmetical Values, by Lewis Carroll (AKA Charles Lutwidge Dodgson)
+
+*** END OF THIS PROJECT GUTENBERG EBOOK CONDENSATION OF DETERMINANTS ***
+
+***** This file should be named 37354-pdf.pdf or 37354-pdf.zip *****
+This and all associated files of various formats will be found in:
+        http://www.gutenberg.org/3/7/3/5/37354/
+
+Produced by Carlo Traverso, Anna Hall and the Online
+Distributed Proofreading Team at http://www.pgdp.net (This
+book was produced from scanned images of public domain
+material from the Google Print project.)
+
+
+Updated editions will replace the previous one--the old editions
+will be renamed.
+
+Creating the works from public domain print editions means that no
+one owns a United States copyright in these works, so the Foundation
+(and you!) can copy and distribute it in the United States without
+permission and without paying copyright royalties.  Special rules,
+set forth in the General Terms of Use part of this license, apply to
+copying and distributing Project Gutenberg-tm electronic works to
+protect the PROJECT GUTENBERG-tm concept and trademark.  Project
+Gutenberg is a registered trademark, and may not be used if you
+charge for the eBooks, unless you receive specific permission.  If you
+do not charge anything for copies of this eBook, complying with the
+rules is very easy.  You may use this eBook for nearly any purpose
+such as creation of derivative works, reports, performances and
+research.  They may be modified and printed and given away--you may do
+practically ANYTHING with public domain eBooks.  Redistribution is
+subject to the trademark license, especially commercial
+redistribution.
+
+
+
+*** START: FULL LICENSE ***
+
+THE FULL PROJECT GUTENBERG LICENSE
+PLEASE READ THIS BEFORE YOU DISTRIBUTE OR USE THIS WORK
+
+To protect the Project Gutenberg-tm mission of promoting the free
+distribution of electronic works, by using or distributing this work
+(or any other work associated in any way with the phrase "Project
+Gutenberg"), you agree to comply with all the terms of the Full Project
+Gutenberg-tm License (available with this file or online at
+http://gutenberg.org/license).
+
+
+Section 1.  General Terms of Use and Redistributing Project Gutenberg-tm
+electronic works
+
+1.A.  By reading or using any part of this Project Gutenberg-tm
+electronic work, you indicate that you have read, understand, agree to
+and accept all the terms of this license and intellectual property
+(trademark/copyright) agreement.  If you do not agree to abide by all
+the terms of this agreement, you must cease using and return or destroy
+all copies of Project Gutenberg-tm electronic works in your possession.
+If you paid a fee for obtaining a copy of or access to a Project
+Gutenberg-tm electronic work and you do not agree to be bound by the
+terms of this agreement, you may obtain a refund from the person or
+entity to whom you paid the fee as set forth in paragraph 1.E.8.
+
+1.B.  "Project Gutenberg" is a registered trademark.  It may only be
+used on or associated in any way with an electronic work by people who
+agree to be bound by the terms of this agreement.  There are a few
+things that you can do with most Project Gutenberg-tm electronic works
+even without complying with the full terms of this agreement.  See
+paragraph 1.C below.  There are a lot of things you can do with Project
+Gutenberg-tm electronic works if you follow the terms of this agreement
+and help preserve free future access to Project Gutenberg-tm electronic
+works.  See paragraph 1.E below.
+
+1.C.  The Project Gutenberg Literary Archive Foundation ("the Foundation"
+or PGLAF), owns a compilation copyright in the collection of Project
+Gutenberg-tm electronic works.  Nearly all the individual works in the
+collection are in the public domain in the United States.  If an
+individual work is in the public domain in the United States and you are
+located in the United States, we do not claim a right to prevent you from
+copying, distributing, performing, displaying or creating derivative
+works based on the work as long as all references to Project Gutenberg
+are removed.  Of course, we hope that you will support the Project
+Gutenberg-tm mission of promoting free access to electronic works by
+freely sharing Project Gutenberg-tm works in compliance with the terms of
+this agreement for keeping the Project Gutenberg-tm name associated with
+the work.  You can easily comply with the terms of this agreement by
+keeping this work in the same format with its attached full Project
+Gutenberg-tm License when you share it without charge with others.
+
+1.D.  The copyright laws of the place where you are located also govern
+what you can do with this work.  Copyright laws in most countries are in
+a constant state of change.  If you are outside the United States, check
+the laws of your country in addition to the terms of this agreement
+before downloading, copying, displaying, performing, distributing or
+creating derivative works based on this work or any other Project
+Gutenberg-tm work.  The Foundation makes no representations concerning
+the copyright status of any work in any country outside the United
+States.
+
+1.E.  Unless you have removed all references to Project Gutenberg:
+
+1.E.1.  The following sentence, with active links to, or other immediate
+access to, the full Project Gutenberg-tm License must appear prominently
+whenever any copy of a Project Gutenberg-tm work (any work on which the
+phrase "Project Gutenberg" appears, or with which the phrase "Project
+Gutenberg" is associated) is accessed, displayed, performed, viewed,
+copied or distributed:
+
+This eBook is for the use of anyone anywhere at no cost and with
+almost no restrictions whatsoever.  You may copy it, give it away or
+re-use it under the terms of the Project Gutenberg License included
+with this eBook or online at www.gutenberg.org
+
+1.E.2.  If an individual Project Gutenberg-tm electronic work is derived
+from the public domain (does not contain a notice indicating that it is
+posted with permission of the copyright holder), the work can be copied
+and distributed to anyone in the United States without paying any fees
+or charges.  If you are redistributing or providing access to a work
+with the phrase "Project Gutenberg" associated with or appearing on the
+work, you must comply either with the requirements of paragraphs 1.E.1
+through 1.E.7 or obtain permission for the use of the work and the
+Project Gutenberg-tm trademark as set forth in paragraphs 1.E.8 or
+1.E.9.
+
+1.E.3.  If an individual Project Gutenberg-tm electronic work is posted
+with the permission of the copyright holder, your use and distribution
+must comply with both paragraphs 1.E.1 through 1.E.7 and any additional
+terms imposed by the copyright holder.  Additional terms will be linked
+to the Project Gutenberg-tm License for all works posted with the
+permission of the copyright holder found at the beginning of this work.
+
+1.E.4.  Do not unlink or detach or remove the full Project Gutenberg-tm
+License terms from this work, or any files containing a part of this
+work or any other work associated with Project Gutenberg-tm.
+
+1.E.5.  Do not copy, display, perform, distribute or redistribute this
+electronic work, or any part of this electronic work, without
+prominently displaying the sentence set forth in paragraph 1.E.1 with
+active links or immediate access to the full terms of the Project
+Gutenberg-tm License.
+
+1.E.6.  You may convert to and distribute this work in any binary,
+compressed, marked up, nonproprietary or proprietary form, including any
+word processing or hypertext form.  However, if you provide access to or
+distribute copies of a Project Gutenberg-tm work in a format other than
+"Plain Vanilla ASCII" or other format used in the official version
+posted on the official Project Gutenberg-tm web site (www.gutenberg.org),
+you must, at no additional cost, fee or expense to the user, provide a
+copy, a means of exporting a copy, or a means of obtaining a copy upon
+request, of the work in its original "Plain Vanilla ASCII" or other
+form.  Any alternate format must include the full Project Gutenberg-tm
+License as specified in paragraph 1.E.1.
+
+1.E.7.  Do not charge a fee for access to, viewing, displaying,
+performing, copying or distributing any Project Gutenberg-tm works
+unless you comply with paragraph 1.E.8 or 1.E.9.
+
+1.E.8.  You may charge a reasonable fee for copies of or providing
+access to or distributing Project Gutenberg-tm electronic works provided
+that
+
+- You pay a royalty fee of 20% of the gross profits you derive from
+     the use of Project Gutenberg-tm works calculated using the method
+     you already use to calculate your applicable taxes.  The fee is
+     owed to the owner of the Project Gutenberg-tm trademark, but he
+     has agreed to donate royalties under this paragraph to the
+     Project Gutenberg Literary Archive Foundation.  Royalty payments
+     must be paid within 60 days following each date on which you
+     prepare (or are legally required to prepare) your periodic tax
+     returns.  Royalty payments should be clearly marked as such and
+     sent to the Project Gutenberg Literary Archive Foundation at the
+     address specified in Section 4, "Information about donations to
+     the Project Gutenberg Literary Archive Foundation."
+
+- You provide a full refund of any money paid by a user who notifies
+     you in writing (or by e-mail) within 30 days of receipt that s/he
+     does not agree to the terms of the full Project Gutenberg-tm
+     License.  You must require such a user to return or
+     destroy all copies of the works possessed in a physical medium
+     and discontinue all use of and all access to other copies of
+     Project Gutenberg-tm works.
+
+- You provide, in accordance with paragraph 1.F.3, a full refund of any
+     money paid for a work or a replacement copy, if a defect in the
+     electronic work is discovered and reported to you within 90 days
+     of receipt of the work.
+
+- You comply with all other terms of this agreement for free
+     distribution of Project Gutenberg-tm works.
+
+1.E.9.  If you wish to charge a fee or distribute a Project Gutenberg-tm
+electronic work or group of works on different terms than are set
+forth in this agreement, you must obtain permission in writing from
+both the Project Gutenberg Literary Archive Foundation and Michael
+Hart, the owner of the Project Gutenberg-tm trademark.  Contact the
+Foundation as set forth in Section 3 below.
+
+1.F.
+
+1.F.1.  Project Gutenberg volunteers and employees expend considerable
+effort to identify, do copyright research on, transcribe and proofread
+public domain works in creating the Project Gutenberg-tm
+collection.  Despite these efforts, Project Gutenberg-tm electronic
+works, and the medium on which they may be stored, may contain
+"Defects," such as, but not limited to, incomplete, inaccurate or
+corrupt data, transcription errors, a copyright or other intellectual
+property infringement, a defective or damaged disk or other medium, a
+computer virus, or computer codes that damage or cannot be read by
+your equipment.
+
+1.F.2.  LIMITED WARRANTY, DISCLAIMER OF DAMAGES - Except for the "Right
+of Replacement or Refund" described in paragraph 1.F.3, the Project
+Gutenberg Literary Archive Foundation, the owner of the Project
+Gutenberg-tm trademark, and any other party distributing a Project
+Gutenberg-tm electronic work under this agreement, disclaim all
+liability to you for damages, costs and expenses, including legal
+fees.  YOU AGREE THAT YOU HAVE NO REMEDIES FOR NEGLIGENCE, STRICT
+LIABILITY, BREACH OF WARRANTY OR BREACH OF CONTRACT EXCEPT THOSE
+PROVIDED IN PARAGRAPH 1.F.3.  YOU AGREE THAT THE FOUNDATION, THE
+TRADEMARK OWNER, AND ANY DISTRIBUTOR UNDER THIS AGREEMENT WILL NOT BE
+LIABLE TO YOU FOR ACTUAL, DIRECT, INDIRECT, CONSEQUENTIAL, PUNITIVE OR
+INCIDENTAL DAMAGES EVEN IF YOU GIVE NOTICE OF THE POSSIBILITY OF SUCH
+DAMAGE.
+
+1.F.3.  LIMITED RIGHT OF REPLACEMENT OR REFUND - If you discover a
+defect in this electronic work within 90 days of receiving it, you can
+receive a refund of the money (if any) you paid for it by sending a
+written explanation to the person you received the work from.  If you
+received the work on a physical medium, you must return the medium with
+your written explanation.  The person or entity that provided you with
+the defective work may elect to provide a replacement copy in lieu of a
+refund.  If you received the work electronically, the person or entity
+providing it to you may choose to give you a second opportunity to
+receive the work electronically in lieu of a refund.  If the second copy
+is also defective, you may demand a refund in writing without further
+opportunities to fix the problem.
+
+1.F.4.  Except for the limited right of replacement or refund set forth
+in paragraph 1.F.3, this work is provided to you 'AS-IS' WITH NO OTHER
+WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO
+WARRANTIES OF MERCHANTIBILITY OR FITNESS FOR ANY PURPOSE.
+
+1.F.5.  Some states do not allow disclaimers of certain implied
+warranties or the exclusion or limitation of certain types of damages.
+If any disclaimer or limitation set forth in this agreement violates the
+law of the state applicable to this agreement, the agreement shall be
+interpreted to make the maximum disclaimer or limitation permitted by
+the applicable state law.  The invalidity or unenforceability of any
+provision of this agreement shall not void the remaining provisions.
+
+1.F.6.  INDEMNITY - You agree to indemnify and hold the Foundation, the
+trademark owner, any agent or employee of the Foundation, anyone
+providing copies of Project Gutenberg-tm electronic works in accordance
+with this agreement, and any volunteers associated with the production,
+promotion and distribution of Project Gutenberg-tm electronic works,
+harmless from all liability, costs and expenses, including legal fees,
+that arise directly or indirectly from any of the following which you do
+or cause to occur: (a) distribution of this or any Project Gutenberg-tm
+work, (b) alteration, modification, or additions or deletions to any
+Project Gutenberg-tm work, and (c) any Defect you cause.
+
+
+Section  2.  Information about the Mission of Project Gutenberg-tm
+
+Project Gutenberg-tm is synonymous with the free distribution of
+electronic works in formats readable by the widest variety of computers
+including obsolete, old, middle-aged and new computers.  It exists
+because of the efforts of hundreds of volunteers and donations from
+people in all walks of life.
+
+Volunteers and financial support to provide volunteers with the
+assistance they need, are critical to reaching Project Gutenberg-tm's
+goals and ensuring that the Project Gutenberg-tm collection will
+remain freely available for generations to come.  In 2001, the Project
+Gutenberg Literary Archive Foundation was created to provide a secure
+and permanent future for Project Gutenberg-tm and future generations.
+To learn more about the Project Gutenberg Literary Archive Foundation
+and how your efforts and donations can help, see Sections 3 and 4
+and the Foundation web page at http://www.pglaf.org.
+
+
+Section 3.  Information about the Project Gutenberg Literary Archive
+Foundation
+
+The Project Gutenberg Literary Archive Foundation is a non profit
+501(c)(3) educational corporation organized under the laws of the
+state of Mississippi and granted tax exempt status by the Internal
+Revenue Service.  The Foundation's EIN or federal tax identification
+number is 64-6221541.  Its 501(c)(3) letter is posted at
+http://pglaf.org/fundraising.  Contributions to the Project Gutenberg
+Literary Archive Foundation are tax deductible to the full extent
+permitted by U.S. federal laws and your state's laws.
+
+The Foundation's principal office is located at 4557 Melan Dr. S.
+Fairbanks, AK, 99712., but its volunteers and employees are scattered
+throughout numerous locations.  Its business office is located at
+809 North 1500 West, Salt Lake City, UT 84116, (801) 596-1887, email
+business@pglaf.org.  Email contact links and up to date contact
+information can be found at the Foundation's web site and official
+page at http://pglaf.org
+
+For additional contact information:
+     Dr. Gregory B. Newby
+     Chief Executive and Director
+     gbnewby@pglaf.org
+
+
+Section 4.  Information about Donations to the Project Gutenberg
+Literary Archive Foundation
+
+Project Gutenberg-tm depends upon and cannot survive without wide
+spread public support and donations to carry out its mission of
+increasing the number of public domain and licensed works that can be
+freely distributed in machine readable form accessible by the widest
+array of equipment including outdated equipment.  Many small donations
+($1 to $5,000) are particularly important to maintaining tax exempt
+status with the IRS.
+
+The Foundation is committed to complying with the laws regulating
+charities and charitable donations in all 50 states of the United
+States.  Compliance requirements are not uniform and it takes a
+considerable effort, much paperwork and many fees to meet and keep up
+with these requirements.  We do not solicit donations in locations
+where we have not received written confirmation of compliance.  To
+SEND DONATIONS or determine the status of compliance for any
+particular state visit http://pglaf.org
+
+While we cannot and do not solicit contributions from states where we
+have not met the solicitation requirements, we know of no prohibition
+against accepting unsolicited donations from donors in such states who
+approach us with offers to donate.
+
+International donations are gratefully accepted, but we cannot make
+any statements concerning tax treatment of donations received from
+outside the United States.  U.S. laws alone swamp our small staff.
+
+Please check the Project Gutenberg Web pages for current donation
+methods and addresses.  Donations are accepted in a number of other
+ways including checks, online payments and credit card donations.
+To donate, please visit: http://pglaf.org/donate
+
+
+Section 5.  General Information About Project Gutenberg-tm electronic
+works.
+
+Professor Michael S. Hart is the originator of the Project Gutenberg-tm
+concept of a library of electronic works that could be freely shared
+with anyone.  For thirty years, he produced and distributed Project
+Gutenberg-tm eBooks with only a loose network of volunteer support.
+
+
+Project Gutenberg-tm eBooks are often created from several printed
+editions, all of which are confirmed as Public Domain in the U.S.
+unless a copyright notice is included.  Thus, we do not necessarily
+keep eBooks in compliance with any particular paper edition.
+
+
+Most people start at our Web site which has the main PG search facility:
+
+     http://www.gutenberg.org
+
+This Web site includes information about Project Gutenberg-tm,
+including how to make donations to the Project Gutenberg Literary
+Archive Foundation, how to help produce our new eBooks, and how to
+subscribe to our email newsletter to hear about new eBooks.
+\end{PGtext}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
+%                                                                         %
+% End of the Project Gutenberg EBook of Condensation of Determinants, Being a
+% New and Brief Method for Computing their Arithmetical Values, by Lewis Carroll (AKA Charles Lutwidge Dodgson)
+%                                                                         %
+% *** END OF THIS PROJECT GUTENBERG EBOOK CONDENSATION OF DETERMINANTS ***%
+%                                                                         %
+% ***** This file should be named 37354-t.tex or 37354-t.zip *****        %
+% This and all associated files of various formats will be found in:      %
+%         http://www.gutenberg.org/3/7/3/5/37354/                         %
+%                                                                         %
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
+
+\end{document}
+
+###
+@ControlwordArguments  =  (
+['\\DPtypo', 1, 0, '', '' ,1, 1, '', ''],
+['\\BookMark', 1, 0, '', '', 1, 0, '', '']
+);
+@ControlwordReplace = (
+['\\tb', '']
+);
+###
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.9.6)  8 SEP 2011 09:21
+entering extended mode
+ %&-line parsing enabled.
+**37354-t.tex
+(./37354-t.tex
+LaTeX2e <2009/09/24>
+Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, farsi, arabic, croatian, bulgarian, ukrainian, russian, czech, slov
+ak, danish, dutch, finnish, french, basque, ngerman, german, german-x-2009-06-1
+9, ngerman-x-2009-06-19, ibycus, monogreek, greek, ancientgreek, hungarian, san
+skrit, italian, latin, latvian, lithuanian, mongolian2a, mongolian, bokmal, nyn
+orsk, romanian, irish, coptic, serbian, turkish, welsh, esperanto, uppersorbian
+, estonian, indonesian, interlingua, icelandic, kurmanji, slovenian, polish, po
+rtuguese, spanish, galician, catalan, swedish, ukenglish, pinyin, loaded.
+(/usr/share/texmf-texlive/tex/latex/base/book.cls
+Document Class: book 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/share/texmf-texlive/tex/latex/base/bk12.clo
+File: bk12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+) (/usr/share/texmf-texlive/tex/latex/base/inputenc.sty
+Package: inputenc 2008/03/30 v1.1d Input encoding file
+\inpenc@prehook=\toks14
+\inpenc@posthook=\toks15
+(/usr/share/texmf-texlive/tex/latex/base/latin1.def
+File: latin1.def 2008/03/30 v1.1d Input encoding file
+)) (/usr/share/texmf-texlive/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2000/07/18 v2.13 AMS math features
+\@mathmargin=\skip43
+For additional information on amsmath, use the `?' option.
+(/usr/share/texmf-texlive/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01
+(/usr/share/texmf-texlive/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks16
+\ex@=\dimen103
+)) (/usr/share/texmf-texlive/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen104
+) (/usr/share/texmf-texlive/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count88
+LaTeX Info: Redefining \frac on input line 211.
+\uproot@=\count89
+\leftroot@=\count90
+LaTeX Info: Redefining \overline on input line 307.
+\classnum@=\count91
+\DOTSCASE@=\count92
+LaTeX Info: Redefining \ldots on input line 379.
+LaTeX Info: Redefining \dots on input line 382.
+LaTeX Info: Redefining \cdots on input line 467.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen105
+LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+\macc@depth=\count93
+\c@MaxMatrixCols=\count94
+\dotsspace@=\muskip10
+\c@parentequation=\count95
+\dspbrk@lvl=\count96
+\tag@help=\toks17
+\row@=\count97
+\column@=\count98
+\maxfields@=\count99
+\andhelp@=\toks18
+\eqnshift@=\dimen106
+\alignsep@=\dimen107
+\tagshift@=\dimen108
+\tagwidth@=\dimen109
+\totwidth@=\dimen110
+\lineht@=\dimen111
+\@envbody=\toks19
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks20
+LaTeX Info: Redefining \[ on input line 2666.
+LaTeX Info: Redefining \] on input line 2667.
+) (/usr/share/texmf-texlive/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2009/06/22 v3.00
+(/usr/share/texmf-texlive/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
+)) (/usr/share/texmf-texlive/tex/latex/base/alltt.sty
+Package: alltt 1997/06/16 v2.0g defines alltt environment
+) (/usr/share/texmf-texlive/tex/latex/tools/array.sty
+Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
+\col@sep=\dimen112
+\extrarowheight=\dimen113
+\NC@list=\toks21
+\extratabsurround=\skip46
+\backup@length=\skip47
+) (/usr/share/texmf-texlive/tex/latex/base/ifthen.sty
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+) (/usr/share/texmf-texlive/tex/latex/fancyhdr/fancyhdr.sty
+\fancy@headwidth=\skip48
+\f@ncyO@elh=\skip49
+\f@ncyO@erh=\skip50
+\f@ncyO@olh=\skip51
+\f@ncyO@orh=\skip52
+\f@ncyO@elf=\skip53
+\f@ncyO@erf=\skip54
+\f@ncyO@olf=\skip55
+\f@ncyO@orf=\skip56
+) (/usr/share/texmf-texlive/tex/latex/geometry/geometry.sty
+Package: geometry 2008/12/21 v4.2 Page Geometry
+(/usr/share/texmf-texlive/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks22
+) (/usr/share/texmf-texlive/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2009/04/10 v2.0 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in pdf mode detected.
+) (/usr/share/texmf-texlive/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2008/11/04 v1.4 Switches for detecting VTeX and its modes (HO)
+Package ifvtex Info: VTeX not detected.
+)
+\Gm@cnth=\count100
+\Gm@cntv=\count101
+\c@Gm@tempcnt=\count102
+\Gm@bindingoffset=\dimen114
+\Gm@wd@mp=\dimen115
+\Gm@odd@mp=\dimen116
+\Gm@even@mp=\dimen117
+\Gm@dimlist=\toks23
+(/usr/share/texmf-texlive/tex/xelatex/xetexconfig/geometry.cfg))
+
+LaTeX Warning: You have requested, on input line 99, version
+               `2010/09/12' of package geometry,
+               but only version
+               `2008/12/21 v4.2 Page Geometry'
+               is available.
+
+(/usr/share/texmf-texlive/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2009/10/09 v6.79a Hypertext links for LaTeX
+(/usr/share/texmf-texlive/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2009/01/23 v0.5 Provides ifxetex conditional
+) (/usr/share/texmf-texlive/tex/latex/oberdiek/hycolor.sty
+Package: hycolor 2009/10/02 v1.5 Code for color options of hyperref/bookmark (H
+O)
+(/usr/share/texmf-texlive/tex/latex/oberdiek/xcolor-patch.sty
+Package: xcolor-patch 2009/10/02 xcolor patch
+))
+\@linkdim=\dimen118
+\Hy@linkcounter=\count103
+\Hy@pagecounter=\count104
+(/usr/share/texmf-texlive/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2009/10/09 v6.79a Hyperref: PDFDocEncoding definition (HO)
+) (/usr/share/texmf-texlive/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2007/12/12 v1.2 Prefix for e-TeX command names (HO)
+(/usr/share/texmf-texlive/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2007/09/09 v1.2 Providing info/warning/message (HO)
+)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+) (/etc/texmf/tex/latex/config/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+) (/usr/share/texmf-texlive/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2009/08/13 v3.4 Keyval support for LaTeX options (HO)
+(/usr/share/texmf-texlive/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2009/07/30 v1.5 Key value parser with default handler suppor
+t (HO)
+))
+Package hyperref Info: Option `hyperfootnotes' set `false' on input line 2864.
+Package hyperref Info: Option `bookmarks' set `true' on input line 2864.
+Package hyperref Info: Option `linktocpage' set `false' on input line 2864.
+Package hyperref Info: Option `pdfdisplaydoctitle' set `true' on input line 286
+4.
+Package hyperref Info: Option `pdfpagelabels' set `true' on input line 2864.
+Package hyperref Info: Option `bookmarksopen' set `true' on input line 2864.
+Package hyperref Info: Option `colorlinks' set `true' on input line 2864.
+Package hyperref Info: Hyper figures OFF on input line 2975.
+Package hyperref Info: Link nesting OFF on input line 2980.
+Package hyperref Info: Hyper index ON on input line 2983.
+Package hyperref Info: Plain pages OFF on input line 2990.
+Package hyperref Info: Backreferencing OFF on input line 2995.
+Implicit mode ON; LaTeX internals redefined
+Package hyperref Info: Bookmarks ON on input line 3191.
+(/usr/share/texmf-texlive/tex/latex/ltxmisc/url.sty
+\Urlmuskip=\muskip11
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 3428.
+(/usr/share/texmf-texlive/tex/generic/oberdiek/bitset.sty
+Package: bitset 2007/09/28 v1.0 Data type bit set (HO)
+(/usr/share/texmf-texlive/tex/generic/oberdiek/intcalc.sty
+Package: intcalc 2007/09/27 v1.1 Expandable integer calculations (HO)
+) (/usr/share/texmf-texlive/tex/generic/oberdiek/bigintcalc.sty
+Package: bigintcalc 2007/11/11 v1.1 Expandable big integer calculations (HO)
+(/usr/share/texmf-texlive/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2009/09/23 v0.6 LuaTeX support for pdfTeX utility functions
+ (HO)
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2009/04/17 v1.2 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+) (/usr/share/texmf-texlive/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2009/08/05 v1.0 Some LaTeX kernel commands for general use (HO
+)
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+)))
+\Fld@menulength=\count105
+\Field@Width=\dimen119
+\Fld@charsize=\dimen120
+\Field@toks=\toks24
+Package hyperref Info: Hyper figures OFF on input line 4377.
+Package hyperref Info: Link nesting OFF on input line 4382.
+Package hyperref Info: Hyper index ON on input line 4385.
+Package hyperref Info: backreferencing OFF on input line 4392.
+Package hyperref Info: Link coloring ON on input line 4395.
+Package hyperref Info: Link coloring with OCG OFF on input line 4402.
+Package hyperref Info: PDF/A mode OFF on input line 4407.
+(/usr/share/texmf-texlive/tex/generic/oberdiek/atbegshi.sty
+Package: atbegshi 2008/07/31 v1.9 At begin shipout hook (HO)
+)
+\Hy@abspage=\count106
+\c@Item=\count107
+)
+*hyperref using driver hpdftex*
+(/usr/share/texmf-texlive/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2009/10/09 v6.79a Hyperref driver for pdfTeX
+\Fld@listcount=\count108
+)
+
+LaTeX Warning: You have requested, on input line 119, version
+               `2011/04/17' of package hyperref,
+               but only version
+               `2009/10/09 v6.79a Hypertext links for LaTeX'
+               is available.
+
+\c@RowCount=\count109
+(./37354-t.aux)
+\openout1 = `37354-t.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 182.
+LaTeX Font Info:    ... okay on input line 182.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 182.
+LaTeX Font Info:    ... okay on input line 182.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 182.
+LaTeX Font Info:    ... okay on input line 182.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 182.
+LaTeX Font Info:    ... okay on input line 182.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 182.
+LaTeX Font Info:    ... okay on input line 182.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 182.
+LaTeX Font Info:    ... okay on input line 182.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 182.
+LaTeX Font Info:    ... okay on input line 182.
+*geometry auto-detecting driver*
+*geometry detected driver: pdftex*
+-------------------- Geometry parameters
+paper: user defined
+landscape: --
+twocolumn: --
+twoside: true
+asymmetric: --
+h-parts: 9.03375pt, 361.34999pt, 9.03375pt
+v-parts: 13.98709pt, 543.19225pt, 20.98065pt
+hmarginratio: 1:1
+vmarginratio: 2:3
+lines: --
+heightrounded: --
+bindingoffset: 0.0pt
+truedimen: --
+includehead: true
+includefoot: true
+includemp: --
+driver: pdftex
+-------------------- Page layout dimensions and switches
+\paperwidth  379.4175pt
+\paperheight 578.15999pt
+\textwidth  361.34999pt
+\textheight 481.31845pt
+\oddsidemargin  -63.23624pt
+\evensidemargin -63.23624pt
+\topmargin  -58.2829pt
+\headheight 12.0pt
+\headsep    19.8738pt
+\footskip   30.0pt
+\marginparwidth 98.0pt
+\marginparsep   7.0pt
+\columnsep  10.0pt
+\skip\footins  10.8pt plus 4.0pt minus 2.0pt
+\hoffset 0.0pt
+\voffset 0.0pt
+\mag 1000
+\@twosidetrue \@mparswitchtrue 
+(1in=72.27pt, 1cm=28.45pt)
+-----------------------
+(/usr/share/texmf-texlive/tex/latex/graphics/color.sty
+Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
+(/etc/texmf/tex/latex/config/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: pdftex.def on input line 130.
+(/usr/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2009/08/25 v0.04m Graphics/color for pdfTeX
+\Gread@gobject=\count110
+(/usr/share/texmf/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count111
+\scratchdimen=\dimen121
+\scratchbox=\box28
+\nofMPsegments=\count112
+\nofMParguments=\count113
+\everyMPshowfont=\toks25
+\MPscratchCnt=\count114
+\MPscratchDim=\dimen122
+\MPnumerator=\count115
+\everyMPtoPDFconversion=\toks26
+)))
+Package hyperref Info: Link coloring ON on input line 182.
+(/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
+Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
+(/usr/share/texmf-texlive/tex/latex/oberdiek/refcount.sty
+Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
+)
+\c@section@level=\count116
+)
+LaTeX Info: Redefining \ref on input line 182.
+LaTeX Info: Redefining \pageref on input line 182.
+(./37354-t.out) (./37354-t.out)
+\@outlinefile=\write3
+\openout3 = `37354-t.out'.
+
+\AtBeginShipoutBox=\box29
+
+Overfull \hbox (84.90642pt too wide) in paragraph at lines 187--187
+[]\OT1/cmtt/m/n/8 and Brief Method for Computing their Arithmetical Values, by 
+Lewis Carroll (AKA Charles Lutwidge Dodgson)[] 
+ []
+
+
+Overfull \hbox (84.90642pt too wide) in paragraph at lines 195--195
+[]\OT1/cmtt/m/n/8 Title: Condensation of Determinants, Being a New and Brief Me
+thod for Computing their Arithmetical Values[] 
+ []
+
+[1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2
+
+] [1
+
+
+
+]
+LaTeX Font Info:    Try loading font information for U+msa on input line 254.
+(/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2009/06/22 v3.00 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 254.
+(/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2009/06/22 v3.00 AMS symbols B
+) [1
+
+
+
+] [2] [3] [4] [5] [6] [7] [8] [9] [10]
+Overfull \hbox (101.90666pt too wide) in paragraph at lines 886--886
+[]\OT1/cmtt/m/n/8 New and Brief Method for Computing their Arithmetical Values,
+ by Lewis Carroll (AKA Charles Lutwidge Dodgson)[] 
+ []
+
+[11
+
+
+
+] [12] [13] [14] [15] [16] [17] (./37354-t.aux)
+
+ *File List*
+    book.cls    2007/10/19 v1.4h Standard LaTeX document class
+    bk12.clo    2007/10/19 v1.4h Standard LaTeX file (size option)
+inputenc.sty    2008/03/30 v1.1d Input encoding file
+  latin1.def    2008/03/30 v1.1d Input encoding file
+ amsmath.sty    2000/07/18 v2.13 AMS math features
+ amstext.sty    2000/06/29 v2.01
+  amsgen.sty    1999/11/30 v2.0
+  amsbsy.sty    1999/11/29 v1.2d
+  amsopn.sty    1999/12/14 v2.01 operator names
+ amssymb.sty    2009/06/22 v3.00
+amsfonts.sty    2009/06/22 v3.00 Basic AMSFonts support
+   alltt.sty    1997/06/16 v2.0g defines alltt environment
+   array.sty    2008/09/09 v2.4c Tabular extension package (FMi)
+  ifthen.sty    2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+fancyhdr.sty    
+geometry.sty    2008/12/21 v4.2 Page Geometry
+  keyval.sty    1999/03/16 v1.13 key=value parser (DPC)
+   ifpdf.sty    2009/04/10 v2.0 Provides the ifpdf switch (HO)
+  ifvtex.sty    2008/11/04 v1.4 Switches for detecting VTeX and its modes (HO)
+geometry.cfg
+hyperref.sty    2009/10/09 v6.79a Hypertext links for LaTeX
+ ifxetex.sty    2009/01/23 v0.5 Provides ifxetex conditional
+ hycolor.sty    2009/10/02 v1.5 Code for color options of hyperref/bookmark (HO
+)
+xcolor-patch.sty    2009/10/02 xcolor patch
+  pd1enc.def    2009/10/09 v6.79a Hyperref: PDFDocEncoding definition (HO)
+etexcmds.sty    2007/12/12 v1.2 Prefix for e-TeX command names (HO)
+infwarerr.sty    2007/09/09 v1.2 Providing info/warning/message (HO)
+hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
+kvoptions.sty    2009/08/13 v3.4 Keyval support for LaTeX options (HO)
+kvsetkeys.sty    2009/07/30 v1.5 Key value parser with default handler support 
+(HO)
+     url.sty    2006/04/12  ver 3.3  Verb mode for urls, etc.
+  bitset.sty    2007/09/28 v1.0 Data type bit set (HO)
+ intcalc.sty    2007/09/27 v1.1 Expandable integer calculations (HO)
+bigintcalc.sty    2007/11/11 v1.1 Expandable big integer calculations (HO)
+pdftexcmds.sty    2009/09/23 v0.6 LuaTeX support for pdfTeX utility functions (
+HO)
+ifluatex.sty    2009/04/17 v1.2 Provides the ifluatex switch (HO)
+ ltxcmds.sty    2009/08/05 v1.0 Some LaTeX kernel commands for general use (HO)
+
+atbegshi.sty    2008/07/31 v1.9 At begin shipout hook (HO)
+ hpdftex.def    2009/10/09 v6.79a Hyperref driver for pdfTeX
+   color.sty    2005/11/14 v1.0j Standard LaTeX Color (DPC)
+   color.cfg    2007/01/18 v1.5 color configuration of teTeX/TeXLive
+  pdftex.def    2009/08/25 v0.04m Graphics/color for pdfTeX
+supp-pdf.mkii
+ nameref.sty    2007/05/29 v2.31 Cross-referencing by name of section
+refcount.sty    2008/08/11 v3.1 Data extraction from references (HO)
+ 37354-t.out
+ 37354-t.out
+    umsa.fd    2009/06/22 v3.00 AMS symbols A
+    umsb.fd    2009/06/22 v3.00 AMS symbols B
+ ***********
+
+ ) 
+Here is how much of TeX's memory you used:
+ 5540 strings out of 493848
+ 77063 string characters out of 1152824
+ 174243 words of memory out of 3000000
+ 8700 multiletter control sequences out of 15000+50000
+ 10943 words of font info for 42 fonts, out of 3000000 for 9000
+ 714 hyphenation exceptions out of 8191
+ 37i,20n,43p,298b,458s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/sh
+are/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-t
+exlive/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-texlive/font
+s/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/publ
+ic/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/
+cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr17.pfb
+></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/
+texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texli
+ve/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-texlive/fonts/typ
+e1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-texlive/fonts/type1/public/a
+msfonts/cm/cmtt8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/symb
+ols/msam10.pfb>
+Output written on 37354-t.pdf (20 pages, 194441 bytes).
+PDF statistics:
+ 173 PDF objects out of 1000 (max. 8388607)
+ 31 named destinations out of 1000 (max. 500000)
+ 33 words of extra memory for PDF output out of 10000 (max. 10000000)
+
